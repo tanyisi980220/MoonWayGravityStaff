@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/car_flow"  android:title="@string/car_flow" android:icon="@drawable/carflow"/>
+    <item android:id="@+id/illegal_activity" android:title="@string/illegal_activity"/>
+    <item android:id="@+id/search_vehicle_number" android:title="@string/search_vehicle_number"/>
+    <item android:id="@+id/logout" android:title="@string/logout"/>
+
+
+</menu>
