@@ -3,12 +3,14 @@ package com.example.moonwaygravitystaff;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.example.moonwaygravitystaff.Model.Staff;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
 import android.view.MenuItem;
 import android.view.View;
 
+import androidx.annotation.NonNull;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -17,7 +19,11 @@ import androidx.navigation.ui.NavigationUI;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -31,7 +37,7 @@ import android.widget.Toast;
 import org.w3c.dom.Text;
 
 public class drawerMain extends AppCompatActivity {
-    TextView textView;
+    TextView textViewStaffEmail,textViewRole;
     FirebaseUser firebaseUser;
     FirebaseDatabase firebaseDatabase;
     FirebaseAuth auth;
@@ -65,14 +71,35 @@ public class drawerMain extends AppCompatActivity {
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         auth = FirebaseAuth.getInstance();
         firebaseDatabase= FirebaseDatabase.getInstance();
+        DatabaseReference staffRef = firebaseDatabase.getReference("Staff");
         Toolbar toolbar = findViewById(R.id.toolbar_main);
         setSupportActionBar(toolbar);
 
         //for navigation view set up
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
-        textView = (TextView) navigationView.getHeaderView(0).findViewById(R.id.staffName);
-        textView.setText(firebaseUser.getEmail());
+        textViewRole =(TextView) navigationView.getHeaderView(0).findViewById(R.id.roleLabel);
+        staffRef.child(firebaseUser.getUid()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(dataSnapshot!=null){
+                    Staff staff = dataSnapshot.getValue(Staff.class);
+                    if(staff.getRole().equals(getString(R.string.adminState))){
+                        textViewRole.setText("Admin");
+                    }else if(staff.getRole().equals(getString(R.string.staffState))){
+                        textViewRole.setText("Staff");
+                    }
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+        textViewStaffEmail = (TextView) navigationView.getHeaderView(0).findViewById(R.id.staffName);
+        textViewStaffEmail.setText(firebaseUser.getEmail());
 
         logout = (MenuItem)navigationView.getMenu().findItem(R.id.nav_logout);
         logout.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
