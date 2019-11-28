@@ -41,14 +41,16 @@ public class StaffLogin extends AppCompatActivity {
         super.onStart();
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         //check if user is not null
-//        if (firebaseUser != null) {
-//            Intent intent = new Intent(this, MainActivity.class);
-//            startActivity(intent);
-//            finish();
-//        }
+        if (firebaseUser != null) {
+            proceedToMain();
+        }
 
     }
-
+    private void proceedToMain(){
+        Intent intent = new Intent(this, drawerMain.class);
+        startActivity(intent);
+        finish();
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,8 +71,7 @@ public class StaffLogin extends AppCompatActivity {
                     showToast(R.drawable.no, "Please do not leave blank!!");
                 } else {
                     dialog.show();
-                    Log.d("messageeee", txt_email);
-                    Log.d("messageeee", txt_pass);
+
                     auth.signInWithEmailAndPassword(txt_email, txt_pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
 
                         @Override
@@ -81,12 +82,15 @@ public class StaffLogin extends AppCompatActivity {
                                     @Override
                                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                         if(dataSnapshot.exists()){
-
-                                            showToast(R.drawable.success_60, "Login Sucessfully!!");
                                             dialog.dismiss();
+                                            showToast(R.drawable.success_60, "Login Sucessfully!!");
+                                            proceedToMain();
+
 
                                         }else{
+                                            auth.signOut();
                                             showToast(R.drawable.no,"Authentication Failed");
+                                            showToast(0,auth.getCurrentUser().getUid());
                                             dialog.dismiss();
                                         }
 
