@@ -25,7 +25,7 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
-
+    <string name="entry_record">Entry Record</string>
     <string name="car_flow">Real Time Car Flow</string>
     <string name="illegal_activity">Illegal Activity</string>
     <string name="search_vehicle_number">Search Vehicle</string>
@@ -49,4 +49,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="adminState">admin</string>
     <string name="staffState">staff</string>
+    <string name="ActiveState">active</string>
+    <string name="CloseState">close</string>
+    <string name="customer_chatroom">Customer Chatroom</string>
 </resources>

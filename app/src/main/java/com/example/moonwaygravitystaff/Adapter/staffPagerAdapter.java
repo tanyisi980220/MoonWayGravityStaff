@@ -2,6 +2,7 @@ package com.example.moonwaygravitystaff.Adapter;
 
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 
 import com.example.moonwaygravitystaff.CustomerSupportFragment;
 import com.example.moonwaygravitystaff.EntryRecordMenuFragment;
@@ -48,9 +49,9 @@ public class staffPagerAdapter extends FragmentPagerAdapter {
         // Generate title based on item position
         switch (position) {
             case 0:
-                return mContext.getString(R.string.home);
-            case 1:
                 return mContext.getString(R.string.customer_support);
+            case 1:
+                return mContext.getString(R.string.entry_record);
             case 2:
                 return mContext.getString(R.string.payment);
             default:
@@ -58,4 +59,6 @@ public class staffPagerAdapter extends FragmentPagerAdapter {
         }
 
     }
+
+
 }

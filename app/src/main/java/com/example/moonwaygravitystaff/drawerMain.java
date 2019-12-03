@@ -48,8 +48,10 @@ public class drawerMain extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_drawer_main);
-
-        init();//initialize
+        Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
+        final String role = bundle.getString("role");
+        init(role);//initialize
 
     }
 
@@ -66,7 +68,7 @@ public class drawerMain extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
-    private void init(){
+    private void init(String role){
 
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         auth = FirebaseAuth.getInstance();
@@ -79,25 +81,13 @@ public class drawerMain extends AppCompatActivity {
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         textViewRole =(TextView) navigationView.getHeaderView(0).findViewById(R.id.roleLabel);
-        staffRef.child(firebaseUser.getUid()).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if(dataSnapshot!=null){
-                    Staff staff = dataSnapshot.getValue(Staff.class);
-                    if(staff.getRole().equals(getString(R.string.adminState))){
-                        textViewRole.setText("Admin");
-                    }else if(staff.getRole().equals(getString(R.string.staffState))){
-                        textViewRole.setText("Staff");
-                    }
+        //set role text
+        if(role.equals(getString(R.string.adminState))){
+            textViewRole.setText("Admin");
+        }else if(role.equals(getString(R.string.staffState))){
+            textViewRole.setText("Staff");
+        }
 
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
         textViewStaffEmail = (TextView) navigationView.getHeaderView(0).findViewById(R.id.staffName);
         textViewStaffEmail.setText(firebaseUser.getEmail());
 
