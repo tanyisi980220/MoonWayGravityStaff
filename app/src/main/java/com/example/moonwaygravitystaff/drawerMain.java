@@ -48,10 +48,26 @@ public class drawerMain extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_drawer_main);
-        Intent intent = getIntent();
-        Bundle bundle = intent.getExtras();
-        final String role = bundle.getString("role");
-        init(role);//initialize
+        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        auth = FirebaseAuth.getInstance();
+        firebaseDatabase= FirebaseDatabase.getInstance();
+
+
+        DatabaseReference staffRef = firebaseDatabase.getReference("Staff");
+        staffRef.child(auth.getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(dataSnapshot.exists()){
+                    Staff staff = dataSnapshot.getValue(Staff.class);
+                    String role = staff.getRole();
+                    init(role);//initialize
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
+        });
+
 
     }
 
@@ -70,9 +86,7 @@ public class drawerMain extends AppCompatActivity {
     }
     private void init(String role){
 
-        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-        auth = FirebaseAuth.getInstance();
-        firebaseDatabase= FirebaseDatabase.getInstance();
+
         DatabaseReference staffRef = firebaseDatabase.getReference("Staff");
         Toolbar toolbar = findViewById(R.id.toolbar_main);
         setSupportActionBar(toolbar);

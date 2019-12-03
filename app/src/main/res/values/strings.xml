@@ -52,4 +52,6 @@
     <string name="ActiveState">active</string>
     <string name="CloseState">close</string>
     <string name="customer_chatroom">Customer Chatroom</string>
+    <string name="add_hourly_rate">Manage Parking Rate</string>
+    <string name="register_staff">Register Staff</string>
 </resources>
