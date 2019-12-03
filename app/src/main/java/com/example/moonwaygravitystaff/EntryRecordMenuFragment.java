@@ -6,6 +6,7 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.app.DatePickerDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Point;
 import android.graphics.Rect;
 import android.net.Uri;
@@ -146,6 +147,7 @@ public class EntryRecordMenuFragment extends Fragment {
                         }
                         entryAdapter = new EntryRecordListAdapter(getActivity(), entryRec);
                         entryRecycler.setAdapter(entryAdapter);
+
 
                         entryAdapter.onBind = (viewHolder, position, ent) -> {
                             viewHolder.image.setOnClickListener(new View.OnClickListener() {
