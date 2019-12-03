@@ -113,7 +113,6 @@ public class StaffLogin extends AppCompatActivity {
                                         }else{
                                             auth.signOut();
                                             showToast(R.drawable.no,"Authentication Failed");
-                                            showToast(0,auth.getCurrentUser().getUid());
                                             dialog.dismiss();
                                         }
 

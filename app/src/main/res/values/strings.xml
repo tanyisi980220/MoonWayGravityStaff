@@ -49,6 +49,14 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="adminState">admin</string>
     <string name="staffState">staff</string>
+
+    <string name="search">Search</string>
+    <string name="license_plate">Enter the vehicle license plate number</string>
+    <string-array name="item_array">
+        <item>None</item>
+        <item>Date</item>
+        <item>Vehicle License Plate Number</item>
+    </string-array>
     <string name="ActiveState">active</string>
     <string name="CloseState">close</string>
     <string name="customer_chatroom">Customer Chatroom</string>
