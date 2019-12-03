@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.moonwaygravitystaff.Model.Staff;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
@@ -35,27 +36,47 @@ public class StaffLogin extends AppCompatActivity {
     FirebaseUser firebaseUser;
     FirebaseDatabase database;
     ProgressDialog dialog;
-
+    Intent intent;
     @Override
     protected void onStart() {
         super.onStart();
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        init();
+        intent= new Intent(this, drawerMain.class);
         //check if user is not null
         if (firebaseUser != null) {
-            proceedToMain();
+            dialog.show();
+            // check if not null
+            DatabaseReference staffRef = database.getReference("Staff");
+            staffRef.child(auth.getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    if(dataSnapshot.exists()){
+                        dialog.dismiss();
+                        Staff staff = dataSnapshot.getValue(Staff.class);
+                        intent.putExtra("role",staff.getRole());
+                        proceedToMain();
+                    }
+                }
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+
         }
 
     }
     private void proceedToMain(){
-        Intent intent = new Intent(this, drawerMain.class);
         startActivity(intent);
         finish();
     }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_staff_login);
-
+        intent= new Intent(this, drawerMain.class);
         init();
         database = FirebaseDatabase.getInstance();
         btn_login.setOnClickListener(new View.OnClickListener() {
@@ -84,6 +105,8 @@ public class StaffLogin extends AppCompatActivity {
                                         if(dataSnapshot.exists()){
                                             dialog.dismiss();
                                             showToast(R.drawable.success_60, "Login Sucessfully!!");
+                                            Staff staff = dataSnapshot.getValue(Staff.class);
+                                            intent.putExtra("role",staff.getRole());
                                             proceedToMain();
 
 

@@ -25,7 +25,7 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
-
+    <string name="entry_record">Entry Record</string>
     <string name="car_flow">Real Time Car Flow</string>
     <string name="illegal_activity">Illegal Activity</string>
     <string name="search_vehicle_number">Search Vehicle</string>
@@ -49,12 +49,17 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="adminState">admin</string>
     <string name="staffState">staff</string>
+
     <string name="search">Search</string>
     <string name="license_plate">Enter the vehicle license plate number</string>
-
     <string-array name="item_array">
         <item>None</item>
         <item>Date</item>
         <item>Vehicle License Plate Number</item>
     </string-array>
+    <string name="ActiveState">active</string>
+    <string name="CloseState">close</string>
+    <string name="customer_chatroom">Customer Chatroom</string>
+    <string name="add_hourly_rate">Manage Parking Rate</string>
+    <string name="register_staff">Register Staff</string>
 </resources>

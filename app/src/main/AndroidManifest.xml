@@ -5,15 +5,14 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:icon="@mipmap/staff_launcher"
+        android:label="Moonway \nStaff Portal"
+        android:roundIcon="@mipmap/staff_launcher_circle"
         android:supportsRtl="true"
         android:theme="@style/MyTheme.DayNight"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".drawerMain">
-
-        </activity>
+        <activity android:name=".StaffChatMessaging"></activity>
+        <activity android:name=".drawerMain"></activity>
         <activity android:name=".StaffMainActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".StaffAuthenticationActivity" />

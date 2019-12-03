@@ -1,6 +1,7 @@
 package com.example.moonwaygravitystaff;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -14,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.moonwaygravitystaff.Adapter.adminPagerAdapter;
 import com.example.moonwaygravitystaff.Adapter.staffPagerAdapter;
 import com.google.android.material.tabs.TabLayout;
 
@@ -28,6 +30,7 @@ import com.google.android.material.tabs.TabLayout;
  */
 public class HomeFragment extends Fragment {
     staffPagerAdapter adapter;
+    adminPagerAdapter adminPagerAdapter;
     TabLayout tabLayout;
     TextView text;
     private OnFragmentInteractionListener mListener;
@@ -55,9 +58,7 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_home, container, false);
-
         initTabLayout(view);
-
         return view;
     }
 
@@ -76,10 +77,19 @@ public class HomeFragment extends Fragment {
     }
     private void initTabLayout(View view){
         tabLayout = (TabLayout) view.findViewById(R.id.tab_layout);
-        adapter = new staffPagerAdapter(getContext(),getChildFragmentManager());
-        ViewPager viewPager = (ViewPager) view.findViewById(R.id.viewpager);
-        viewPager.setAdapter(adapter);
-        tabLayout.setupWithViewPager(viewPager);
+        Intent intent = getActivity().getIntent();
+        String role = intent.getExtras().getString("role");
+        if(role.equals(getString(R.string.adminRole))){
+            adminPagerAdapter = new adminPagerAdapter(getContext(),getChildFragmentManager());
+            ViewPager viewPager = (ViewPager) view.findViewById(R.id.viewpager);
+            viewPager.setAdapter(adminPagerAdapter);
+            tabLayout.setupWithViewPager(viewPager);
+        }else{
+            adapter = new staffPagerAdapter(getContext(),getChildFragmentManager());
+            ViewPager viewPager = (ViewPager) view.findViewById(R.id.viewpager);
+            viewPager.setAdapter(adapter);
+            tabLayout.setupWithViewPager(viewPager);
+        }
     }
 
 
