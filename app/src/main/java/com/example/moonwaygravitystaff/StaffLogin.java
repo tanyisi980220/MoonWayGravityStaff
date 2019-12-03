@@ -55,23 +55,21 @@ public class StaffLogin extends AppCompatActivity {
                         dialog.dismiss();
                         Staff staff = dataSnapshot.getValue(Staff.class);
                         intent.putExtra("role",staff.getRole());
+                        intent.putExtra("p",loginPassword.getText().toString());
+
                         proceedToMain();
                     }
                 }
                 @Override
                 public void onCancelled(@NonNull DatabaseError databaseError) {
-
                 }
             });
-
         }
-
     }
     private void proceedToMain(){
         startActivity(intent);
         finish();
     }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -85,8 +83,8 @@ public class StaffLogin extends AppCompatActivity {
             public void onClick(View view) {
 
                 // get the login details
-                String txt_email = loginEmail.getText().toString();
-                String txt_pass = loginPassword.getText().toString();
+                final String txt_email = loginEmail.getText().toString();
+                final String txt_pass = loginPassword.getText().toString();
 
                 if (TextUtils.isEmpty(txt_email) || TextUtils.isEmpty(txt_pass)) { // check if anything in the field
                     showToast(R.drawable.no, "Please do not leave blank!!");
@@ -107,13 +105,15 @@ public class StaffLogin extends AppCompatActivity {
                                             showToast(R.drawable.success_60, "Login Sucessfully!!");
                                             Staff staff = dataSnapshot.getValue(Staff.class);
                                             intent.putExtra("role",staff.getRole());
+                                            intent.putExtra("p",txt_pass);
+                                            intent.putExtra("e",txt_email);
                                             proceedToMain();
 
 
                                         }else{
                                             auth.signOut();
                                             showToast(R.drawable.no,"Authentication Failed");
-                                            showToast(0,auth.getCurrentUser().getUid());
+
                                             dialog.dismiss();
                                         }
 
