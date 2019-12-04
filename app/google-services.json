@@ -89,6 +89,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "211093333348-6v3nhm4glsktn3hap07b8b6sumu459ta.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.moonwaygravitystaff",
+            "certificate_hash": "d3743970a1728d92b7857fced8c7dafe0183f464"
+          }
+        },
+        {
           "client_id": "211093333348-en8kegcvdpijeaa5savboan5cmejnj94.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

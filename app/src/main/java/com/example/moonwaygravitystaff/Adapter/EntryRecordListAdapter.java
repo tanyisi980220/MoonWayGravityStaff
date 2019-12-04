@@ -84,6 +84,7 @@ public class EntryRecordListAdapter extends RecyclerView.Adapter<EntryRecordList
             }
         });
 
+
         if(onBind!=null){
             onBind.onViewBound(holder,position,ent);
         }
