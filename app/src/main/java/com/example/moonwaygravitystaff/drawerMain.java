@@ -48,6 +48,9 @@ public class drawerMain extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_drawer_main);
+
+        Intent intent = new Intent(this, PushNotification.class);
+        startService(intent);
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         auth = FirebaseAuth.getInstance();
         firebaseDatabase= FirebaseDatabase.getInstance();
