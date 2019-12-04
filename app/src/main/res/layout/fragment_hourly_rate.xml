@@ -1,14 +1,153 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".HourlyRateFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Manage Parking rate"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:textAppearance="?textAppearanceHeadline4"
+        android:id="@+id/header"/>
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Hello hourly" />
+        android:orientation="horizontal"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="60dp"
+        android:layout_below="@id/header">
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
 
-</FrameLayout>
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txtLicensePlate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:text="Hourly Rate :"
+                android:textAlignment="textEnd"
+                android:textSize="18dp"
+                android:layout_marginTop="1dp"
+                android:textAppearance="?textAppearanceBody2" />
+            <TextView
+                android:id="@+id/txtEntryDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Daily Rate :"
+                android:layout_marginTop="30dp"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/txtLicensePlate"
+                android:textSize="18dp"
+                android:textAppearance="?textAppearanceBody2"/>
+            <TextView
+                android:id="@+id/txtEntryTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="First Hour Rate :"
+                android:layout_marginTop="30dp"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/txtEntryDate"
+                android:textSize="18dp"
+                android:textAppearance="?textAppearanceBody2"/>
+
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content">
+
+
+
+            <EditText
+                android:id="@+id/edtHourly"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Hourly Rate"
+                android:textAppearance="?textAppearanceBody2"
+                android:textColor="@color/black"
+                android:textSize="18dp"
+                android:inputType="number"
+                android:enabled="false"
+                android:layout_marginLeft="10dp"
+                />
+            <EditText
+                android:id="@+id/edtDaily"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Daily Rate"
+                android:textAppearance="?textAppearanceBody2"
+                android:textColor="@color/black"
+                android:textSize="18dp"
+                android:inputType="number"
+                android:enabled="false"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_below="@id/edtHourly"
+                />
+            <EditText
+                android:id="@+id/edtFirstHour"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="First Hour Rate"
+                android:textAppearance="?textAppearanceBody2"
+                android:textColor="@color/black"
+                android:textSize="18dp"
+                android:inputType="number"
+                android:enabled="false"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_below="@id/edtDaily"
+                />
+
+
+
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnModify"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/modify"
+        android:textSize="18dp"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        android:layout_marginBottom="20dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+
+
+        />
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnSubmit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/submit"
+        android:textSize="18dp"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        android:layout_marginBottom="20dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:visibility="gone"
+
+
+        />
+
+</RelativeLayout>
