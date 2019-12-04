@@ -37,18 +37,47 @@
                 android:text="Customer Support"/>
 
             <com.google.android.material.button.MaterialButton
+
                 android:layout_marginLeft="40dp"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/btn_call"
-               android:text="End Conversation"
-                android:textSize="30px"
+                android:layout_height="match_parent"
+                android:id="@+id/btnEndConversation"
+                android:text="@string/end_conversation"
+                android:textSize="20px"
+                android:singleLine="true"
                 android:backgroundTint="#f54242"/>
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycleViewMessage"
         android:layout_below="@+id/bar_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         />
+    <RelativeLayout
+        android:id="@+id/bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:background="#fff"
+        android:layout_alignParentBottom="true">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/text_send"
+            android:layout_toLeftOf="@+id/btn_send"
+            android:background="@android:color/transparent"
+            android:hint="Write your issue here ..."
+            android:layout_centerVertical="true"/>
+
+        <ImageButton
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:id="@+id/btn_send"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:background="@drawable/ic_action_name"/>
+
+    </RelativeLayout>
 </RelativeLayout>
