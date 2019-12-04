@@ -11,8 +11,9 @@
         android:supportsRtl="true"
         android:theme="@style/MyTheme.DayNight"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".StaffChatMessaging"></activity>
-        <activity android:name=".drawerMain"></activity>
+        <activity android:name=".entryRecordDetail"></activity>
+        <activity android:name=".StaffChatMessaging" />
+        <activity android:name=".drawerMain" />
         <activity android:name=".StaffMainActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".StaffAuthenticationActivity" />

@@ -62,6 +62,10 @@
     <string name="customer_chatroom">Customer Chatroom</string>
     <string name="add_hourly_rate">Manage Parking Rate</string>
     <string name="register_staff">Register Staff</string>
+
+    <string name="modify">Modify</string>
+
     <string name="staff_name">Staff Name</string>
     <string name="staff_email">Staff Email</string>
+
 </resources>
