@@ -60,6 +60,7 @@ public class EntryRecordListAdapter extends RecyclerView.Adapter<EntryRecordList
         holder.entrytime.setText(ent.getTime());
         holder.setPostImage(context,ent.getLicensePlateImage());
 
+
         if(onBind!=null){
             onBind.onViewBound(holder,position,ent);
         }

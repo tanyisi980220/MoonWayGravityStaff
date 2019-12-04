@@ -11,11 +11,13 @@
         android:supportsRtl="true"
         android:theme="@style/MyTheme.DayNight"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".StaffChatMessaging"></activity>
-        <activity android:name=".drawerMain"></activity>
+        <activity android:name=".IllegalRecordList"></activity>
+        <activity android:name=".StaffChatMessaging" />
+        <activity android:name=".drawerMain" />
         <activity android:name=".StaffMainActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".StaffAuthenticationActivity" />
+        <activity android:name=".CarFlowRecordList" />
         <activity
             android:name=".StaffLogin"
             android:exported="true"

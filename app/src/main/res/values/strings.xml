@@ -57,9 +57,21 @@
         <item>Date</item>
         <item>Vehicle License Plate Number</item>
     </string-array>
+    <string-array name="carflow_array">
+        <item>All</item>
+        <item>Block</item>
+    </string-array>
     <string name="ActiveState">active</string>
     <string name="CloseState">close</string>
     <string name="customer_chatroom">Customer Chatroom</string>
     <string name="add_hourly_rate">Manage Parking Rate</string>
     <string name="register_staff">Register Staff</string>
+    <string name="block">Block</string>
+    <string name="filter_by">Filter By </string>
+    <string name="floor">Floor</string>
+    <string name="header_total_car_flow">Total Flow</string>
+    <string name="header_parked">Parked Vehicle</string>
+    <string name="header_uparked">Unparked Vehicle</string>
+    <string name="number_of_floor">Number of Floor</string>
+    <string name="done">Done</string>
 </resources>
