@@ -23,7 +23,6 @@ public class staffPagerAdapter extends FragmentPagerAdapter {
         super(fm);
         mContext = context;
     }
-
     // This determines the fragment for each tab
     @Override
     public Fragment getItem(int position) {
@@ -42,7 +41,6 @@ public class staffPagerAdapter extends FragmentPagerAdapter {
     public int getCount() {
         return 3;
     }
-
     // This determines the title for each tab
     @Override
     public CharSequence getPageTitle(int position) {
