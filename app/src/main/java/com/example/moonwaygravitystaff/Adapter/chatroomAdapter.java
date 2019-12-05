@@ -63,10 +63,8 @@ public class chatroomAdapter extends RecyclerView.Adapter<chatroomAdapter.chatro
                 Customer customer = dataSnapshot.getValue(Customer.class);
                 holder.customerName.setText(customer.getName());
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
             }
         });
         holder.mView.setOnClickListener(new View.OnClickListener() {
@@ -77,7 +75,6 @@ public class chatroomAdapter extends RecyclerView.Adapter<chatroomAdapter.chatro
                 //Update the staff id and jump to the activity
                 DatabaseReference messageRef = database.getReference("Message");
                 DatabaseReference chatroomRef = database.getReference("Chatroom");
-
                 chatroomRef.child(chatroom.getId()).child("staffid").setValue(firebaseUser.getUid());
                 Intent intent = new Intent(context, StaffChatMessaging.class);
                 intent.putExtra("chatroomid",chatroom.getId());
@@ -86,7 +83,6 @@ public class chatroomAdapter extends RecyclerView.Adapter<chatroomAdapter.chatro
             }
         });
     }
-
     @Override
     public int getItemCount() {
         return chatrooms.size();
@@ -102,6 +98,7 @@ public class chatroomAdapter extends RecyclerView.Adapter<chatroomAdapter.chatro
             mView = itemView;
             customerName = itemView.findViewById(R.id.customerName);
             chatroomDate = itemView.findViewById(R.id.chatroomDate);
+
         }
     }
 }
