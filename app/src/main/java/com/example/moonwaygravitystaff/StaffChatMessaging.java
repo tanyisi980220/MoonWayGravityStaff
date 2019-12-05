@@ -3,6 +3,7 @@ package com.example.moonwaygravitystaff;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -11,6 +12,8 @@ import com.example.moonwaygravitystaff.StaffLogin;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+
 
 import android.provider.ContactsContract;
 import android.view.View;
@@ -48,6 +51,7 @@ public class StaffChatMessaging extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_staff_chat_messaging);
+
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         final String chatroomid = bundle.getString("chatroomid");
@@ -158,5 +162,6 @@ public class StaffChatMessaging extends AppCompatActivity {
             Toast.makeText(StaffChatMessaging.this, "Error occurred retrieving chatroom ID.", Toast.LENGTH_LONG);
             finish();
         }
+
     }
 }

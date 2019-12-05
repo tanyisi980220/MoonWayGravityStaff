@@ -4,71 +4,68 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:elevation="20dp"
     android:layout_margin="7dp"
-    app:cardCornerRadius="@dimen/keyline_2">
+    >
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="50dp"
         android:orientation="vertical"
-        android:background="#121111">
+        android:background="#E1C699">
 
         <TextView
-            android:layout_margin="@dimen/keyline_4"
-            android:layout_width="150dp"
+            android:layout_marginLeft="@dimen/keyline_4"
+            android:layout_marginTop="8dp"
+            android:layout_width="220dp"
             android:layout_height="wrap_content"
             android:id="@+id/floor_name"
             android:text="B1"
-            android:textSize="@dimen/keyline_6"
-            android:fontFamily="sans-serif-condensed"
-            android:textColor="#ffff" />
+            android:textSize="20dp"
+            android:fontFamily="sans-serif-condensed"/>
 
         <TextView
+            android:layout_marginTop="@dimen/keyline_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@+id/floor_name"
-            android:text="Total Car Flow :"
-            android:textSize="20dp"
-            android:id="@+id/lbl_total_flow"
-            android:textColor="#fff"
-            android:layout_marginTop="10dp"
+            android:text="@string/header_uparked"
+            android:textSize="10dp"
+            android:id="@+id/lbl_unparked"
+            android:layout_marginRight="10dp"
             />
 
         <TextView
+            android:layout_marginTop="@dimen/keyline_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="123"
+            android:textSize="10dp"
+            android:id="@+id/unparked"
+            android:layout_toRightOf="@+id/lbl_unparked"
+            />
+
+        <TextView
+            android:layout_marginTop="@dimen/keyline_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@+id/floor_name"
-            android:id="@+id/lbl_parked_slot"
-            android:text="Parked :"
-            android:textSize="20dp"
-            android:textColor="#fff"
-            android:layout_marginTop="40dp"
-            android:layout_marginLeft="70dp"
+            android:text="@string/header_parked"
+            android:textSize="10dp"
+            android:id="@+id/lbl_parked"
+            android:layout_below="@+id/lbl_unparked"
             />
 
         <TextView
+            android:layout_marginTop="@dimen/keyline_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/lbl_total_flow"
-            android:id="@+id/total_flow"
-            android:text="xxx"
-            android:textSize="20dp"
-            android:textColor="#fff"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="10dp"
-            />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/lbl_parked_slot"
-            android:id="@+id/parked_slot"
-            android:text="xxx"
-            android:textSize="20dp"
-            android:textColor="#fff"
-            android:layout_marginTop="40dp"
-            android:layout_marginLeft="10dp"
+            android:text="123"
+            android:textSize="10dp"
+            android:id="@+id/parked_no"
+            android:layout_marginRight="10dp"
+            android:layout_toRightOf="@+id/lbl_parked"
+            android:layout_below="@+id/lbl_unparked"
+            android:layout_marginLeft="20dp"
             />
     </RelativeLayout>
 

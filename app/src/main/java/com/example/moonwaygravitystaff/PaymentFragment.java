@@ -28,7 +28,9 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 
 
 /**
@@ -48,7 +50,7 @@ public class PaymentFragment extends Fragment {
     Button btnSearch,btnPay;
     TextInputEditText txtLicensePlate,edtCash;
     TextView txtParkingFee,txtDate,txtTime;
-    DatabaseReference entryRef,parkingLotRef;
+    DatabaseReference entryRef,parkingLotRef,transRef;
     Double fees;
     ProgressDialog dialog;
     LinearLayout layout;
@@ -224,8 +226,25 @@ public class PaymentFragment extends Fragment {
                                         showToast(R.drawable.no,"The cash amount is not enough");
                                         calculateFees(date,time,licensePlate,key);
                                     }else{
+                                        Date date = Calendar.getInstance().getTime();
+                                        SimpleDateFormat sdfDate = new SimpleDateFormat("dd-MM-yyyy");
+                                        SimpleDateFormat sdfTime = new SimpleDateFormat("HH:mm:ss");
+
+                                        transRef = FirebaseDatabase.getInstance().getReference();
+                                        HashMap<String, Object> hashMap = new HashMap<>();
+                                        hashMap.put("status", "Approve");
+                                        hashMap.put("amount", fees);
+                                        hashMap.put("transactionType", "Pay Parking Fees");
+                                        hashMap.put("transactionDate", sdfDate.format(date));
+                                        hashMap.put("transactionTime", sdfTime.format(date));
+                                        
+                                        String id = sdfDate.format(date)+sdfTime.format(date)+key;
+
+                                        transRef.child("Transaction").child(id).setValue(hashMap);
+
                                         showToast(R.drawable.success_60,"Parking fee paid");
                                         entryRef.child(key).child("status").setValue("Paid");
+                                        entryRef.child(key).child("transID").setValue(id);
                                         final MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(getActivity());
                                         builder.setMessage("Change : RM"+ change +"\nPlease exit within 20 minutes")
                                                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
@@ -236,7 +255,6 @@ public class PaymentFragment extends Fragment {
                                                         txtTime.setVisibility(View.INVISIBLE);
                                                         btnPay.setVisibility(View.INVISIBLE);
                                                         txtLicensePlate.setText("");
-                                                        txtLicensePlate.setFocusable(false);
 
                                                     }
                                                 }).show();
