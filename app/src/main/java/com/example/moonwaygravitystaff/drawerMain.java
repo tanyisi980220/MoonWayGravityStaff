@@ -38,6 +38,7 @@ import org.w3c.dom.Text;
 
 public class drawerMain extends AppCompatActivity {
     TextView textViewStaffEmail,textViewRole;
+    Toolbar toolbar;
     FirebaseUser firebaseUser;
     FirebaseDatabase firebaseDatabase;
     FirebaseAuth auth;
@@ -48,7 +49,7 @@ public class drawerMain extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_drawer_main);
-
+        toolbar = findViewById(R.id.toolbar_main);
         Intent intent = new Intent(this, PushNotification.class);
         startService(intent);
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
@@ -71,7 +72,7 @@ public class drawerMain extends AppCompatActivity {
             }
         });
 
-
+        //change toolbar color
     }
 
     @Override
@@ -123,7 +124,7 @@ public class drawerMain extends AppCompatActivity {
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_home, R.id.nav_carflow, R.id.nav_suspicous,R.id.nav_improper,
-                R.id.nav_logout)
+                R.id.nav_logout,R.id.nav_announcement)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);

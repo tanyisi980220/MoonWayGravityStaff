@@ -38,7 +38,7 @@
     <string name="staffRole">staff</string>
     <string name="adminRole">admin</string>
     <string name="title_activity_staff_drawer">StaffDrawer</string>
-<string name ="end_conversation">End Conversation</string>
+    <string name="end_conversation">End Conversation</string>
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="title_activity_drawer_main">drawerMain</string>
@@ -81,5 +81,7 @@
 
     <string name="staff_name">Staff Name</string>
     <string name="staff_email">Staff Email</string>
+    <string name="no_chatroom_found">No chatroom found.</string>
+    <string name="announcement">Announcement</string>
 
 </resources>

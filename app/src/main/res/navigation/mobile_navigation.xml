@@ -29,5 +29,9 @@
         android:label="@string/improper_parking"
         tools:layout="@layout/fragment_improper" />
 
-
+    <fragment
+        android:id="@+id/nav_announcement"
+        android:name="com.example.moonwaygravitystaff.ManageAnnouncement"
+        android:label="@string/announcement"
+        tools:layout="@layout/fragment_manage_announcement" />
 </navigation>
