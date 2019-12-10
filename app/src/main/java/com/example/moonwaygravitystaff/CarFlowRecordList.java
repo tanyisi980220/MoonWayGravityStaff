@@ -32,7 +32,6 @@ public class CarFlowRecordList extends AppCompatActivity {
     private RecyclerView floorRecycle;
     String blockid;
     TextView count_floor;
-    Button btnDone;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -52,7 +51,6 @@ public class CarFlowRecordList extends AppCompatActivity {
         floorsList = new ArrayList<>();
         floorRecycle = findViewById(R.id.floorRecycler);
         count_floor = findViewById(R.id.count_floor);
-        btnDone = findViewById(R.id.back_to_home);
 
         floorRecycle.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getBaseContext());
@@ -100,13 +98,6 @@ public class CarFlowRecordList extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
-            }
-        });
-
-        btnDone.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
             }
         });
     }

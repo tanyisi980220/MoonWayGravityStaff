@@ -38,14 +38,14 @@ public class blockAdapter extends RecyclerView.Adapter<blockAdapter.blockViewHol
         holder.blockName.setText("Block " + blocks.getBlockName());
         holder.floorNo.setText(String.valueOf(blocks.getFloorNo()));
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), CarFlowRecordList.class);
-                intent.putExtra("block_name", blocks.getBlockName());
-                v.getContext().startActivity(intent);
-            }
-        });
+//        holder.itemView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(v.getContext(), CarFlowRecordList.class);
+//                intent.putExtra("block_name", blocks.getBlockName());
+//                v.getContext().startActivity(intent);
+//            }
+//        });
     }
 
     @Override

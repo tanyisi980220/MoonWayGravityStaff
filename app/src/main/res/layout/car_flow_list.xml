@@ -48,42 +48,39 @@
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="17dp"
-            android:text="Show Parked and Unparked Vehicle"
+            android:layout_height="wrap_content"
+            android:text="Show parked and unparked vehicle."
             android:id="@+id/flow_title"
-            android:textSize="15dp"
+            android:textSize="22dp"
             android:textStyle="bold" />
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="18dp"
+            android:layout_height="wrap_content"
             android:text="There are"
             android:id="@+id/count_floor"
-            android:textSize="12dp"
+            android:textSize="18dp"
             android:layout_below="@+id/flow_title"/>
-    </RelativeLayout>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/layy1"
-        android:layout_margin="@dimen/keyline_2">
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/floorRecycler"
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:listitem="@layout/block_row" />
+            android:text="Select a block"
+            android:textSize="18dp"
+            android:id="@+id/lbl_select_block"
+            android:layout_below="@+id/count_floor"/>
 
-        <Button
-            android:layout_below="@id/floorRecycler"
+        <androidx.appcompat.widget.AppCompatSpinner
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/done"
-            android:background="@color/black"
-            android:id="@+id/back_to_home"/>
+            android:layout_height="20dp"
+            android:layout_below="@+id/lbl_select_block"/>
+
 
     </RelativeLayout>
+
+
+
+
 
 </RelativeLayout>
 
