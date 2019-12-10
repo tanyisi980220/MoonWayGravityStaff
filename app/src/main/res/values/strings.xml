@@ -83,5 +83,7 @@
     <string name="staff_email">Staff Email</string>
     <string name="no_chatroom_found">No chatroom found.</string>
     <string name="announcement">Announcement</string>
+    <string name="title_activity_manage_profile">ManageProfile</string>
+    <string name="view_transaction">View Transaction</string>
 
 </resources>

@@ -11,17 +11,38 @@
         android:supportsRtl="true"
         android:theme="@style/MyTheme.DayNight"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".IllegalRecordList"></activity>
-        <activity android:name=".entryRecordDetail"></activity>
-        <activity android:name=".StaffChatMessaging" />
-        <activity android:name=".drawerMain" />
-        <activity android:name=".StaffMainActivity" />
-        <activity android:name=".MainActivity" />
-        <activity android:name=".StaffAuthenticationActivity" />
-        <activity android:name=".CarFlowRecordList" />
+        <activity
+            android:name=".ManageProfile"
+            android:label="@string/title_activity_manage_profile"
+            android:theme="@style/MyTheme.DayNight.NoActionBar"></activity>
+        <activity
+            android:name=".IllegalRecordList"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".entryRecordDetail"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".StaffChatMessaging"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".drawerMain"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".StaffMainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".StaffAuthenticationActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".CarFlowRecordList"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".StaffLogin"
             android:exported="true"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -29,6 +50,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <service
             android:name=".PushNotification"
             android:enabled="true" />

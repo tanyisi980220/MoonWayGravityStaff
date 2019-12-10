@@ -34,4 +34,9 @@
         android:name="com.example.moonwaygravitystaff.ManageAnnouncement"
         android:label="@string/announcement"
         tools:layout="@layout/fragment_manage_announcement" />
+    <fragment
+        android:id="@+id/nav_transaction"
+        android:name="com.example.moonwaygravitystaff.ViewTransaction"
+        android:label="@string/view_transaction"
+        tools:layout="@layout/fragment_view_transaction" />
 </navigation>

@@ -108,7 +108,14 @@ public class drawerMain extends AppCompatActivity {
 
         textViewStaffEmail = (TextView) navigationView.getHeaderView(0).findViewById(R.id.staffName);
         textViewStaffEmail.setText(firebaseUser.getEmail());
-
+        //click and go to user profile activity
+        textViewStaffEmail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                    Intent intent = new Intent(getApplicationContext(), ManageProfile.class);
+                    startActivity(intent);
+            }
+        });
         logout = (MenuItem)navigationView.getMenu().findItem(R.id.nav_logout);
         logout.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
@@ -123,7 +130,7 @@ public class drawerMain extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_carflow, R.id.nav_suspicous,R.id.nav_improper,
+                R.id.nav_home, R.id.nav_carflow, R.id.nav_suspicous,R.id.nav_improper,R.id.nav_transaction,
                 R.id.nav_logout,R.id.nav_announcement)
                 .setDrawerLayout(drawer)
                 .build();
