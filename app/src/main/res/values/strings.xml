@@ -57,10 +57,6 @@
         <item>Date</item>
         <item>Vehicle License Plate Number</item>
     </string-array>
-    <string-array name="carflow_array">
-        <item>All</item>
-        <item>Block</item>
-    </string-array>
     <string name="ActiveState">active</string>
     <string name="CloseState">close</string>
     <string name="customer_chatroom">Customer Chatroom</string>
