@@ -17,6 +17,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.moonwaygravitystaff.Model.Chatroom;
@@ -35,9 +36,11 @@ import java.util.List;
 
 public class CustomerSupportFragment extends Fragment {
     private FirebaseUser firebaseUser;
+
     chatroomAdapter chatroomAdapter;
     List<Chatroom> chatrooms = new ArrayList<>();
     RecyclerView chatroomRecycleView;
+    TextView NoChatroom;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     Resources res;
     private OnFragmentInteractionListener mListener;
@@ -72,12 +75,15 @@ public class CustomerSupportFragment extends Fragment {
     }
 
     private void init(View view) {
+        NoChatroom = view.findViewById(R.id.noChatroomLabel);
         chatroomRecycleView = view.findViewById(R.id.chatroomRecycleView);
         chatroomRecycleView.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
         linearLayoutManager.setStackFromEnd(true);
         chatroomRecycleView.setLayoutManager(linearLayoutManager);
         retrieveActiveChatroom();
+
+
     }
 
     private void retrieveActiveChatroom() {
@@ -91,11 +97,19 @@ public class CustomerSupportFragment extends Fragment {
 
                     Chatroom chatroom = dataSnapshot.getValue(Chatroom.class);
                     chatroom.setId(dataSnapshot.getKey());
-                    if(chatroom.getStaffid().equals("") ||chatroom.getStaffid().equals(firebaseUser.getUid()))
-                    chatrooms.add(chatroom);
-                    chatroomAdapter = new chatroomAdapter(getActivity(), chatrooms);
-                    chatroomRecycleView.setAdapter(chatroomAdapter);
+                    if (chatroom.getStaffid().equals("") || chatroom.getStaffid().equals(firebaseUser.getUid())){
+                        chatrooms.add(chatroom);
+                        chatroomAdapter = new chatroomAdapter(getActivity(), chatrooms);
+                        chatroomRecycleView.setAdapter(chatroomAdapter);
+                    }
+
+                    if (chatrooms.size()<= 0) {
+                        NoChatroom.setVisibility(View.VISIBLE);
+                    }else{
+                        NoChatroom.setVisibility(View.GONE);
+                    }
                 }
+
             }
 
             @Override
@@ -118,6 +132,14 @@ public class CustomerSupportFragment extends Fragment {
 
             }
         });
+        new android.os.Handler().postDelayed(
+                new Runnable() {
+                    public void run() {
+
+                    }
+                },
+                1200);
+
     }
 
     public void onButtonPressed(Uri uri) {

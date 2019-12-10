@@ -37,7 +37,8 @@
     </style>
 
     <style name="toolbarTheme" parent="Widget.MaterialComponents.Toolbar">
-        <item name="android:textColorSecondaryInverse">#FFFFFF</item>
+        <item name="android:textColorSecondary">#FFFFFF</item>
+        <item name="android:colorForeground">#FFFFFF</item>
         <item name="android:background">#293036</item>
     </style>
 

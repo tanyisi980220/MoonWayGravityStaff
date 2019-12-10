@@ -20,13 +20,15 @@
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+          >
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar_main"
                 style="@style/toolbarTheme"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+              >
 
 
                     <LinearLayout

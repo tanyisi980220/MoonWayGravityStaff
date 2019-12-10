@@ -12,7 +12,17 @@
 
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
+        <com.google.android.material.textview.MaterialTextView
+            android:drawableLeft="@drawable/no"
+            style="?materialButtonOutlinedStyle"
+            android:textColor="@color/black"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/noChatroomLabel"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:text="@string/no_chatroom_found" />
 
 
         <LinearLayout
@@ -29,6 +39,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
                 android:text="@string/customer_chatroom" />
+
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/chatroomRecycleView"
