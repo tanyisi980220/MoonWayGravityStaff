@@ -11,10 +11,11 @@
         android:supportsRtl="true"
         android:theme="@style/MyTheme.DayNight"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".ChangePassword"></activity>
         <activity
             android:name=".ManageProfile"
             android:label="@string/title_activity_manage_profile"
-            android:theme="@style/MyTheme.DayNight.NoActionBar"></activity>
+            android:theme="@style/MyTheme.DayNight.NoActionBar" />
         <activity
             android:name=".IllegalRecordList"
             android:screenOrientation="portrait" />
