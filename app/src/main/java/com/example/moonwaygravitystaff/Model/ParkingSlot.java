@@ -3,8 +3,17 @@ package com.example.moonwaygravitystaff.Model;
 public class ParkingSlot {
     private String compid;
     private String status;
+    private String name;
 
     public ParkingSlot() {
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getCompid() {

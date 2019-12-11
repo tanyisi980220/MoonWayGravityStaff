@@ -55,10 +55,11 @@ public class SuspiciousFragment extends Fragment {
     TableRow tr;
     TextView licenseNo, entryDateTime, CarFlowLocation, lbllicenseNo, lblentryDateTime, lblCarFlowLocation, blockName, lblfloor;
     Spinner spinner, spinner1;
-    List<String> blockNameList,flooridList;
+    List<String> blockNameList, flooridList;
     TableLayout tableLayout;
     String pending = "PENDING";
     String floorName;
+    int rowCount = 0;
 
     private OnFragmentInteractionListener mListener;
 
@@ -191,6 +192,7 @@ public class SuspiciousFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String block_name = spinner.getSelectedItem().toString();
+                rowCount = 0;
 
                 if (block_name.equals("All")) {
                     tableLayout.removeAllViews();
@@ -230,13 +232,17 @@ public class SuspiciousFragment extends Fragment {
 
                                         if (days >= 1) {
                                             displayAllRecords(ent);
+                                            rowCount++;
                                         } else if (hours >= 1) {
                                             displayAllRecords(ent);
+                                            rowCount++;
                                         } else if (minutes >= 10) {
                                             displayAllRecords(ent);
+                                            rowCount++;
                                         } else if (hours < 1) {
                                             if (minutes >= 10) {
                                                 displayAllRecords(ent);
+                                                rowCount++;
                                             }
                                         }
 
@@ -244,6 +250,11 @@ public class SuspiciousFragment extends Fragment {
                                         Log.d("hi", e.getMessage());
                                     }
                                 }
+                            }
+                            Toast.makeText(getContext(),String.valueOf(rowCount),Toast.LENGTH_SHORT).show();
+                            if (rowCount == 0) {
+                                tableLayout.removeAllViews();
+                                blockName.setText("No suspicious car record found!");
                             }
                         }
 
@@ -255,13 +266,13 @@ public class SuspiciousFragment extends Fragment {
 
 
                 } else {
-
-                    addTableHeader();
+                    tableLayout.removeAllViews();
                     blockName.setText("Block " + block_name);
-
+                    addTableHeader();
                     blockRef.addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            rowCount = 0;
                             for (DataSnapshot data : dataSnapshot.getChildren()) {
                                 Blocks blocks = data.getValue(Blocks.class);
 
@@ -304,19 +315,19 @@ public class SuspiciousFragment extends Fragment {
                                                                         final long hours = minutes / 60;
                                                                         final long days = hours / 24;
 
-                                                                        Log.wtf("days 123 : ", String.valueOf(days));
-                                                                        Log.wtf("hours 123 : ", String.valueOf(hours));
-                                                                        Log.wtf("minute 123: ", String.valueOf(minutes));
-
                                                                         if (days >= 1) {
                                                                             displayAllRecords(ent);
+                                                                            rowCount++;
                                                                         } else if (hours >= 1) {
                                                                             displayAllRecords(ent);
+                                                                            rowCount++;
                                                                         } else if (minutes >= 10) {
                                                                             displayAllRecords(ent);
+                                                                            rowCount++;
                                                                         } else if (hours < 1) {
                                                                             if (minutes >= 10) {
                                                                                 displayAllRecords(ent);
+                                                                                rowCount++;
                                                                             }
                                                                         }
 
@@ -342,6 +353,11 @@ public class SuspiciousFragment extends Fragment {
                                         }
                                     });
                                 }
+                            }
+
+                            if (rowCount == 0) {
+                                tableLayout.removeAllViews();
+                                blockName.setText("No suspicious car record found!");
                             }
                         }
 
