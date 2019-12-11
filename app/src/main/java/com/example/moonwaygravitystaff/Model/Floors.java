@@ -9,13 +9,6 @@ public class Floors {
 
     public Floors() {}
 
-    public Floors(String floor_id, String floorName, int flowNo, int parkedNo) {
-        this.floor_id = floor_id;
-        this.floorName = floorName;
-        this.flowNo = flowNo;
-        this.parkedNo = parkedNo;
-    }
-
     public int getFlowNo() {
         return flowNo;
     }

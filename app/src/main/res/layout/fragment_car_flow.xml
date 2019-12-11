@@ -19,7 +19,9 @@
             android:layout_height="wrap_content"
             android:text="@string/car_flow"
             android:textSize="25dp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:gravity="center"
+            />
 
         <TextView
             android:id="@+id/lbl_flow_description"
@@ -70,7 +72,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/keyline_2"
-            android:text="Block A"
+            android:text="All Blocks"
             android:textSize="20dp"
             android:layout_marginLeft="20dp"
             android:textColor="#0E2433"
