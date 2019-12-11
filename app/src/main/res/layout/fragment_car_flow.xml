@@ -19,7 +19,9 @@
             android:layout_height="wrap_content"
             android:text="@string/car_flow"
             android:textSize="25dp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:gravity="center"
+            />
 
         <TextView
             android:id="@+id/lbl_flow_description"

@@ -44,6 +44,7 @@
     <string name="title_activity_drawer_main">drawerMain</string>
     <string name="improper_parking">Improper Parking</string>
     <string name="suspicious_parking">Suspicious Parking</string>
+    <string name="suspicious_activity">Suspicious Vehicle Activity</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

@@ -1,9 +1,17 @@
 package com.example.moonwaygravitystaff.Model;
 
 public class EntryRecords {
-    public String authorizeDriverImage,date,licensePlateImage,status,time,vehicleLicensePlateNumber,parkingSlotNumber;
+    public String authorizeDriverImage,date,licensePlateImage,status,time,vehicleLicensePlateNumber,parkingSlotNumber, carflowLocation;
 
     public EntryRecords() {
+    }
+
+    public String getCarflowLocation() {
+        return carflowLocation;
+    }
+
+    public void setCarflowLocation(String carflowLocation) {
+        this.carflowLocation = carflowLocation;
     }
 
     public String getParkingSlotNumber() {

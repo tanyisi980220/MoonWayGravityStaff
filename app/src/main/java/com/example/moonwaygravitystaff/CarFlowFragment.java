@@ -45,15 +45,43 @@ import static android.R.layout.simple_spinner_item;
 public class CarFlowFragment extends Fragment {
     DatabaseReference blockRef, floorRef;
     TableRow tr;
-    TextView floorName, parkedNo, flowNo,lblfloorName,lblparkedNo,lblflowNo;
+    TextView floorName, parkedNo, flowNo, lblfloorName, lblparkedNo, lblflowNo, blockName;
     Spinner spinner;
     List<String> blockNameList, blockidList;
-    int rowcount =1;
+    TableLayout tableLayout;
 
     private OnFragmentInteractionListener mListener;
 
     public CarFlowFragment() {
         // Required empty public constructor
+    }
+
+    public void addTableHeader() {
+        tableLayout.removeAllViews();
+        lblfloorName = new TextView(getContext());
+        lblparkedNo = new TextView(getContext());
+        lblflowNo = new TextView(getContext());
+        lblfloorName.setText("Floor");
+        lblflowNo.setText("Moving Number");
+        lblparkedNo.setText("Parked Number");
+        lblfloorName.setTextSize(18);
+        lblfloorName.setGravity(Gravity.CENTER);
+        lblflowNo.setTextSize(18);
+        lblflowNo.setGravity(Gravity.CENTER);
+        lblparkedNo.setTextSize(18);
+        lblparkedNo.setGravity(Gravity.CENTER);
+        lblfloorName.setPadding(10, 10, 10, 10);
+        lblparkedNo.setPadding(10, 10, 10, 10);
+        lblflowNo.setPadding(10, 10, 10, 10);
+        lblfloorName.setTextColor(Color.WHITE);
+        lblflowNo.setTextColor(Color.WHITE);
+        lblparkedNo.setTextColor(Color.WHITE);
+        tr = new TableRow(getContext());
+        tr.addView(lblfloorName);
+        tr.addView(lblflowNo);
+        tr.addView(lblparkedNo);
+        tr.setBackgroundColor(Color.BLACK);
+        tableLayout.addView(tr);
     }
 
     public static CarFlowFragment newInstance(String param1, String param2) {
@@ -72,8 +100,9 @@ public class CarFlowFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_car_flow, container, false);
-        TableLayout tableLayout = view.findViewById(R.id.table_layout);
+        tableLayout = view.findViewById(R.id.table_layout);
         spinner = view.findViewById(R.id.dropdown);
+        blockName = view.findViewById(R.id.block_name);
 
         blockNameList = new ArrayList<String>();
         blockidList = new ArrayList<String>();
@@ -117,35 +146,12 @@ public class CarFlowFragment extends Fragment {
                                        int arg2, long arg3) {
                 // TODO Auto-generated method stub
                 String block_name = spinner.getSelectedItem().toString();
-                Toast.makeText(view.getContext(), block_name, Toast.LENGTH_SHORT).show();
-
+//                Toast.makeText(view.getContext(), block_name, Toast.LENGTH_SHORT).show();
                 if (block_name.equals("All")) {
                     Toast.makeText(getContext(), String.valueOf(tableLayout.getChildCount()), Toast.LENGTH_SHORT).show();
                     tableLayout.removeAllViews();
-                    lblfloorName = new TextView(getContext());
-                    lblparkedNo = new TextView(getContext());
-                    lblflowNo = new TextView(getContext());
-                    lblfloorName.setText("Floor");
-                    lblflowNo.setText("Moving Number");
-                    lblparkedNo.setText("Parked Number");
-                    lblfloorName.setTextSize(18);
-                    lblfloorName.setGravity(Gravity.CENTER);
-                    lblflowNo.setTextSize(18);
-                    lblflowNo.setGravity(Gravity.CENTER);
-                    lblparkedNo.setTextSize(18);
-                    lblparkedNo.setGravity(Gravity.CENTER);
-                    lblfloorName.setPadding(10, 10,10,10);
-                    lblparkedNo.setPadding(10, 10,10,10);
-                    lblflowNo.setPadding(10, 10,10,10);
-                    lblfloorName.setTextColor(Color.WHITE);
-                    lblflowNo.setTextColor(Color.WHITE);
-                    lblparkedNo.setTextColor(Color.WHITE);
-                    tr = new TableRow(getContext());
-                    tr.addView(lblfloorName);
-                    tr.addView(lblflowNo);
-                    tr.addView(lblparkedNo);
-                    tr.setBackgroundColor(Color.BLACK);
-                    tableLayout.addView(tr);
+                    addTableHeader();
+                    blockName.setText("All Blocks");
                     floorRef.addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -182,38 +188,16 @@ public class CarFlowFragment extends Fragment {
 
                         }
                     });
-                    Toast.makeText(getContext(), String.valueOf(tableLayout.getChildCount()), Toast.LENGTH_SHORT).show();
+                    // Toast.makeText(getContext(), String.valueOf(tableLayout.getChildCount()), Toast.LENGTH_SHORT).show();
                 } else {
-                    tableLayout.removeAllViews();
-                    lblfloorName = new TextView(getContext());
-                    lblparkedNo = new TextView(getContext());
-                    lblflowNo = new TextView(getContext());
-                    lblfloorName.setText("Floor");
-                    lblflowNo.setText("Moving Number");
-                    lblparkedNo.setText("Parked Number");
-                    lblfloorName.setTextSize(18);
-                    lblfloorName.setGravity(Gravity.CENTER);
-                    lblflowNo.setTextSize(18);
-                    lblflowNo.setGravity(Gravity.CENTER);
-                    lblparkedNo.setTextSize(18);
-                    lblparkedNo.setGravity(Gravity.CENTER);
-                    lblfloorName.setPadding(10, 10,10,10);
-                    lblparkedNo.setPadding(10, 10,10,10);
-                    lblflowNo.setPadding(10, 10,10,10);
-                    lblfloorName.setTextColor(Color.WHITE);
-                    lblflowNo.setTextColor(Color.WHITE);
-                    lblparkedNo.setTextColor(Color.WHITE);
-                    tr = new TableRow(getContext());
-                    tr.addView(lblfloorName);
-                    tr.addView(lblflowNo);
-                    tr.addView(lblparkedNo);
-                    tr.setBackgroundColor(Color.BLACK);
-                    tableLayout.addView(tr);
+                    addTableHeader();
+                    blockName.setText("Block " + block_name);
                     blockRef.addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                             for (DataSnapshot data : dataSnapshot.getChildren()) {
                                 Blocks blocks = data.getValue(Blocks.class);
+
                                 if (blocks.getParkingLotid().equals("-LtmhqyC5ACsE-k8dB8Q") && block_name.equals(data.child("blockName").getValue())) {
                                     String bid = data.getKey();
                                     floorRef.addValueEventListener(new ValueEventListener() {
