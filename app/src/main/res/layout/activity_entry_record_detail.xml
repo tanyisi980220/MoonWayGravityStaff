@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    android:id="@+id/container"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -38,141 +40,267 @@
 
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
-    <LinearLayout
+
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal"
+        android:layout_above="@+id/btnModify"
         android:layout_below="@id/bar_layout"
-        android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="60dp">
+        android:layout_marginBottom="5dp">
+
         <RelativeLayout
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-
-            android:orientation="vertical">
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent">
 
             <TextView
-                android:id="@+id/txtLicensePlate"
+                android:id="@+id/header"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:text="Vehicle License Plate Number :"
-                android:textAlignment="textEnd"
-                android:textSize="18dp"
-                android:layout_marginTop="1dp"
-                android:textAppearance="?textAppearanceBody2" />
-            <TextView
-                android:id="@+id/txtEntryDate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Entry Date :"
-                android:layout_marginTop="30dp"
-                android:layout_alignParentRight="true"
-                android:layout_below="@id/txtLicensePlate"
-                android:textSize="18dp"
-                android:textAppearance="?textAppearanceBody2"/>
-            <TextView
-                android:id="@+id/txtEntryTime"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Entry Time :"
-                android:layout_marginTop="30dp"
-                android:layout_alignParentRight="true"
-                android:layout_below="@id/txtEntryDate"
-                android:textSize="18dp"
-                android:textAppearance="?textAppearanceBody2"/>
-            <TextView
-                android:id="@+id/txtExitDate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Exit Date :"
-                android:layout_marginTop="30dp"
-                android:layout_alignParentRight="true"
-                android:layout_below="@id/txtEntryTime"
-                android:textSize="18dp"
-                android:textAppearance="?textAppearanceBody2"/>
-            <TextView
-                android:id="@+id/txtExitTime"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Exit Time :"
-                android:layout_marginTop="30dp"
-                android:layout_alignParentRight="true"
-                android:layout_below="@id/txtExitDate"
-                android:textSize="18dp"
-                android:textAppearance="?textAppearanceBody2"/>
-
-        </RelativeLayout>
-        <RelativeLayout
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content">
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:text="Entry Record Details"
+                android:textAppearance="?textAppearanceHeadline4" />
 
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/header"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:orientation="horizontal">
 
-                <EditText
-                    android:id="@+id/edtLicensePlate"
-                    android:layout_width="match_parent"
+                <RelativeLayout
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:hint="License Plate Number"
-                    android:textAppearance="?textAppearanceBody2"
-                    android:textColor="@color/black"
-                    android:textSize="18dp"
-                    android:inputType="text"
-                    android:enabled="false"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginLeft="10dp"/>
+                    android:layout_weight="1"
 
-            <TextView
-                android:id="@+id/txtEntryDate1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Entry Date"
-                android:layout_marginTop="30dp"
-                android:layout_alignParentLeft="true"
-                android:layout_marginLeft="10dp"
-                android:layout_below="@id/edtLicensePlate"
-                android:textSize="18dp"
-                android:textAppearance="?textAppearanceBody2"/>
-            <TextView
-                android:id="@+id/txtEntryTime1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Entry Time"
-                android:layout_marginTop="30dp"
-                android:layout_alignParentLeft="true"
-                android:layout_marginLeft="10dp"
-                android:layout_below="@id/txtEntryDate1"
-                android:textSize="18dp"
-                android:textAppearance="?textAppearanceBody2"/>
-            <TextView
-                android:id="@+id/txtExitDate1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Exit Date"
-                android:layout_marginTop="30dp"
-                android:layout_alignParentLeft="true"
-                android:layout_marginLeft="10dp"
-                android:layout_below="@id/txtEntryTime1"
-                android:textSize="18dp"
-                android:textAppearance="?textAppearanceBody2"/>
-            <TextView
-                android:id="@+id/txtExitTime1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Exit Time"
-                android:layout_marginTop="30dp"
-                android:layout_alignParentLeft="true"
-                android:layout_marginLeft="10dp"
-                android:layout_below="@id/txtExitDate1"
-                android:textSize="18dp"
-                android:textAppearance="?textAppearanceBody2"/>
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/txtLicensePlate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginTop="1dp"
+                        android:text="Vehicle License Plate Number :"
+                        android:textAlignment="textEnd"
+                        android:textAppearance="?textAppearanceBody2"
+                        android:textSize="18dp" />
+
+                    <TextView
+                        android:id="@+id/txtEntryDate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/txtLicensePlate"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginTop="20dp"
+                        android:text="Entry Date :"
+                        android:textAppearance="?textAppearanceBody2"
+                        android:textSize="18dp" />
+
+                    <TextView
+                        android:id="@+id/txtEntryTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/txtEntryDate"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginTop="20dp"
+                        android:text="Entry Time :"
+                        android:textAppearance="?textAppearanceBody2"
+                        android:textSize="18dp" />
+
+                    <TextView
+                        android:id="@+id/txtExitDate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/txtEntryTime"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginTop="20dp"
+                        android:text="Exit Date :"
+                        android:textAppearance="?textAppearanceBody2"
+                        android:textSize="18dp" />
+
+                    <TextView
+                        android:id="@+id/txtExitTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/txtExitDate"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginTop="20dp"
+                        android:text="Exit Time :"
+                        android:textAppearance="?textAppearanceBody2"
+                        android:textSize="18dp" />
+
+                    <TextView
+                        android:id="@+id/txtFees"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/txtExitTime"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginTop="20dp"
+                        android:text="Parking Fees :"
+                        android:textAppearance="?textAppearanceBody2"
+                        android:textSize="18dp" />
+
+                    <TextView
+                        android:id="@+id/txtLicensePlateImg"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/txtFees"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginTop="20dp"
+                        android:text="License Plate Image :"
+                        android:textAlignment="textEnd"
+                        android:textAppearance="?textAppearanceBody2"
+                        android:textSize="18dp" />
+
+                    <TextView
+                        android:id="@+id/txtFaceImg"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/txtLicensePlateImg"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginTop="28dp"
+                        android:text="Authorized Driver Face Image :"
+                        android:textAlignment="textEnd"
+                        android:textAppearance="?textAppearanceBody2"
+                        android:textSize="18dp"
+                        app:textAllCaps="false" />
+
+                    <TextView
+                        android:id="@+id/txtUnauthorizedFaceImg"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/txtFaceImg"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginTop="28dp"
+                        android:text="Unauthorized Driver Face Image :"
+                        android:textAlignment="textEnd"
+                        android:textAppearance="?textAppearanceBody2"
+                        android:textSize="18dp"
+                        app:textAllCaps="false"
+                        android:visibility="gone"/>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+
+                    <EditText
+                        android:id="@+id/edtLicensePlate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:enabled="false"
+                        android:hint="License Plate Number"
+                        android:inputType="text"
+                        android:textAppearance="?textAppearanceBody2"
+                        android:textColor="@color/black"
+                        android:textSize="18dp" />
+
+                    <TextView
+                        android:id="@+id/txtEntryDate1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/edtLicensePlate"
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="22dp"
+                        android:text="Entry Date"
+                        android:textAppearance="?textAppearanceBody2"
+                        android:textSize="18dp" />
+
+                    <TextView
+                        android:id="@+id/txtEntryTime1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/txtEntryDate1"
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="20dp"
+                        android:text="Entry Time"
+                        android:textAppearance="?textAppearanceBody2"
+                        android:textSize="18dp" />
+
+                    <TextView
+                        android:id="@+id/txtExitDate1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/txtEntryTime1"
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="20dp"
+                        android:text="Exit Date"
+                        android:textAppearance="?textAppearanceBody2"
+                        android:textSize="18dp" />
+
+                    <TextView
+                        android:id="@+id/txtExitTime1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/txtExitDate1"
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="20dp"
+                        android:text="Exit Time"
+                        android:textAppearance="?textAppearanceBody2"
+                        android:textSize="18dp" />
+
+                    <TextView
+                        android:id="@+id/txtFees1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/txtExitTime1"
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="20dp"
+                        android:text="fees"
+                        android:textAppearance="?textAppearanceBody2"
+                        android:textSize="18dp" />
+
+                    <ImageView
+                        android:id="@+id/imgLicensePlate"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_below="@id/txtFees1"
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="28dp"
+                        android:src="@drawable/logo" />
+
+                    <ImageView
+                        android:id="@+id/imgDriver"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_below="@id/imgLicensePlate"
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="28dp"
+                        android:src="@drawable/logo" />
+
+                    <ImageView
+                        android:id="@+id/imgUnauthorizedDriver"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_below="@id/imgDriver"
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="32dp"
+                        android:src="@drawable/logo"
+                        android:visibility="gone"/>
+
+                </RelativeLayout>
+
+            </LinearLayout>
 
         </RelativeLayout>
 
-    </LinearLayout>
+    </ScrollView>
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnModify"
         android:layout_width="match_parent"
@@ -204,5 +332,22 @@
 
 
         />
+    <RelativeLayout
+        android:id="@+id/layout1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black"
+        android:visibility="invisible">
+
+        <ImageView
+            android:id="@+id/expanded_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="Vehicle License Plate Image"
+            android:visibility="invisible" />
+
+    </RelativeLayout>
+
+
 
 </RelativeLayout>

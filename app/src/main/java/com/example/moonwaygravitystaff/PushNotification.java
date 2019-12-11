@@ -74,7 +74,7 @@ public class PushNotification extends Service {
                                                 NotificationCompat.Builder builder = new NotificationCompat.Builder(PushNotification.this)
                                                         .setSmallIcon(R.drawable.logo)
                                                         .setContentText("My Notification")
-                                                        .setContentTitle("Car stolen by someone issue")
+                                                        .setContentTitle("Unauthorized driver issue ")
                                                         .setAutoCancel(true)
                                                         .setSound(defSoundUri)
                                                         .setContentIntent(yespendingIntent);
