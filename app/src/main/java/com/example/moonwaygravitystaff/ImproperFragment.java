@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,7 +21,6 @@ import android.widget.Spinner;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.moonwaygravitystaff.Adapter.blockAdapter;
 import com.example.moonwaygravitystaff.Adapter.illegalBlockAdapter;
@@ -43,11 +43,12 @@ public class ImproperFragment extends Fragment {
 
     DatabaseReference blockRef, floorRef, compRef, slotRef;
     TableRow tr;
-    TextView slotName, slotLocation, lblSlotName, lblSlotLocation, blockName;
+    TextView slotName, slotLocation, lblSlotName, lblSlotLocation, blockName,record_count;
     Spinner spinner;
     List<String> blockNameList, flooridList, compsidList, slotidList;
     TableLayout tableLayout;
     String improper = "IMPROPER";
+    public int count = 0;
 
 
     private ImproperFragment.OnFragmentInteractionListener mListener;
@@ -84,7 +85,7 @@ public class ImproperFragment extends Fragment {
         tableLayout.addView(tr);
     }
 
-    public void displayAllRecords(String slot, String blocks, String floors) {
+    public void displayAllRecords(String slot, String blocks, String floors, int countt) {
         slotName = new TextView(getContext());
         slotLocation = new TextView(getContext());
         slotName.setText(slot);
@@ -114,6 +115,7 @@ public class ImproperFragment extends Fragment {
         tableLayout = view.findViewById(R.id.table_layout);
         spinner = view.findViewById(R.id.dropdown);
         blockName = view.findViewById(R.id.block_name);
+        record_count = view.findViewById(R.id.count_floor);
 
         blockNameList = new ArrayList<String>();
         flooridList = new ArrayList<String>();
@@ -147,13 +149,15 @@ public class ImproperFragment extends Fragment {
         spinner.setAdapter(dataAdapter);
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String block_name = spinner.getSelectedItem().toString();
-
+                count =0;
                 if (block_name.equals("All")) {
                     tableLayout.removeAllViews();
                     addTableHeader();
+                    blockName.setText("All Blocks ");
 
                     blockRef.addValueEventListener(new ValueEventListener() {
                         @Override
@@ -186,7 +190,8 @@ public class ImproperFragment extends Fragment {
                                                                                 if (parkingSlot.getStatus() != null) {
                                                                                     if (parkingSlot.getCompid().equals(compid) && parkingSlot.getStatus().toUpperCase().equals(improper)) {
                                                                                         String slotName = parkingSlot.getName();
-                                                                                        displayAllRecords(slotName, blockname, floorname);
+                                                                                        count++;
+                                                                                        displayAllRecords(slotName, blockname, floorname, count);
                                                                                     }
                                                                                 }
                                                                             }
@@ -261,7 +266,8 @@ public class ImproperFragment extends Fragment {
                                                                                 if (parkingSlot.getStatus() != null) {
                                                                                     if (parkingSlot.getCompid().equals(compid) && parkingSlot.getStatus().toUpperCase().equals(improper)) {
                                                                                         String slotName = parkingSlot.getName();
-                                                                                        displayAllRecords(slotName, blockname, floorname);
+                                                                                        count++;
+                                                                                        displayAllRecords(slotName, blockname, floorname,count);
                                                                                     }
                                                                                 }
                                                                             }
@@ -307,7 +313,6 @@ public class ImproperFragment extends Fragment {
 
             }
         });
-
         return view;
     }
 

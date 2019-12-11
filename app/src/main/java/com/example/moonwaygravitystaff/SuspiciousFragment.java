@@ -26,7 +26,6 @@ import android.widget.Spinner;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.moonwaygravitystaff.Model.Blocks;
 import com.example.moonwaygravitystaff.Model.EntryRecords;
@@ -123,7 +122,6 @@ public class SuspiciousFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 floorName = dataSnapshot.child("floorName").getValue().toString().toUpperCase();
-                Toast.makeText(getContext(), floorName, Toast.LENGTH_SHORT).show();
                 CarFlowLocation.setText(floorName);
             }
 
@@ -192,10 +190,10 @@ public class SuspiciousFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String block_name = spinner.getSelectedItem().toString();
-                rowCount = 0;
 
                 if (block_name.equals("All")) {
                     tableLayout.removeAllViews();
+                    blockName.setText("All Blocks");
                     addTableHeader();
 
                     entryRef.addValueEventListener(new ValueEventListener() {
@@ -251,11 +249,6 @@ public class SuspiciousFragment extends Fragment {
                                     }
                                 }
                             }
-                            Toast.makeText(getContext(),String.valueOf(rowCount),Toast.LENGTH_SHORT).show();
-                            if (rowCount == 0) {
-                                tableLayout.removeAllViews();
-                                blockName.setText("No suspicious car record found!");
-                            }
                         }
 
                         @Override
@@ -272,7 +265,6 @@ public class SuspiciousFragment extends Fragment {
                     blockRef.addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                            rowCount = 0;
                             for (DataSnapshot data : dataSnapshot.getChildren()) {
                                 Blocks blocks = data.getValue(Blocks.class);
 
@@ -353,11 +345,6 @@ public class SuspiciousFragment extends Fragment {
                                         }
                                     });
                                 }
-                            }
-
-                            if (rowCount == 0) {
-                                tableLayout.removeAllViews();
-                                blockName.setText("No suspicious car record found!");
                             }
                         }
 
